@@ -1,0 +1,23 @@
+{
+  "name": "intervolga-bemjson-loader",
+  "version": "1.0.0",
+  "description": "BemJson loader for WebPack 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shkarupa-alex/bemjson-loader.git"
+  },
+  "keywords": [
+    "bemjson",
+    "webpack"
+  ],
+  "author": "Shkarupa Alex",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shkarupa-alex/bemjson-loader/issues"
+  },
+  "homepage": "https://github.com/shkarupa-alex/bemjson-loader#readme"
+}
