@@ -1,0 +1,15 @@
+{
+  "block": "a",
+  "content": [
+    {
+      "block": "b",
+      "content": "content of b"
+    },
+    "content of a",
+    {
+      "block": "c",
+      "content": "original content of c"
+    },
+    "the end"
+  ]
+}

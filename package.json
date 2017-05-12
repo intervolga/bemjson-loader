@@ -4,7 +4,9 @@
   "description": "BemJson loader for WebPack 2",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "lint": "eslint lib test/index.js",
+    "test": "mocha --ui tdd test/",
+    "test:debug": "DEBUG=loader npm test"
   },
   "repository": {
     "type": "git",
@@ -12,12 +14,28 @@
   },
   "keywords": [
     "bemjson",
-    "webpack"
+    "webpack",
+    "loader"
   ],
   "author": "Shkarupa Alex",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shkarupa-alex/bemjson-loader/issues"
   },
-  "homepage": "https://github.com/shkarupa-alex/bemjson-loader#readme"
+  "homepage": "https://github.com/shkarupa-alex/bemjson-loader#readme",
+  "dependencies": {
+    "loader-utils": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "mocha": "^3.3.0",
+    "webpack": "^2.5.1"
+  }
 }
