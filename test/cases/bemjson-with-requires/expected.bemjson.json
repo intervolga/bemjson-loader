@@ -1,14 +1,27 @@
 {
-  "block": "page",
-  "content": [
+  "bemjson": {
+    "block": "page",
+    "content": [
+      {
+        "block": "header",
+        "content": "header content"
+      },
+      "content",
+      {
+        "block": "footer",
+        "content": "footer content"
+      }
+    ]
+  },
+  "bemdecl": [
     {
-      "block": "header",
-      "content": "header content"
+      "block": "page"
     },
-    "content",
     {
-      "block": "footer",
-      "content": "footer content"
+      "block": "header"
+    },
+    {
+      "block": "footer"
     }
   ]
 }

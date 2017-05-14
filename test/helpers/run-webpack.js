@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
-const vm = require('vm');
 const generateConfig = require('./generate-config');
 
 module.exports = (entry, stringify) => {
@@ -27,8 +26,7 @@ module.exports = (entry, stringify) => {
 
         resolve(result);
       } catch (e) {
-        reject(err);
-        return;
+        reject(e);
       }
     });
   });

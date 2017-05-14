@@ -8,7 +8,7 @@ module.exports = {
     },
     content: [
       'This is normal bemjson',
-      1 + 2
+      1 + 2,
     ],
   }, {
     elem: 'e2',

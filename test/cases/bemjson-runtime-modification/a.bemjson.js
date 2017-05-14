@@ -4,6 +4,6 @@ module.exports = {
     require('./b.bemjson.js'),
     'content of a',
     require('./c.bemjson'),
-    'the end'
+    'the end',
   ],
 };
