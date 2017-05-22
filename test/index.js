@@ -45,7 +45,7 @@ describe('bemjson loader', () => {
   it('should pass normal bemjson', () => {
     const paths = getCasePaths('normal-bemjson');
 
-    runWebpack(paths.source).then((result) => {
+    return runWebpack(paths.source).then((result) => {
       expect(result).to.eql(require(paths.expected));
     });
   });
@@ -53,7 +53,7 @@ describe('bemjson loader', () => {
   it('should pass normal bemjson with requires', () => {
     const paths = getCasePaths('bemjson-with-requires');
 
-    runWebpack(paths.source).then((result) => {
+    return runWebpack(paths.source).then((result) => {
       expect(result).to.eql(require(paths.expected));
     });
   });
@@ -91,7 +91,7 @@ describe('bemjson loader', () => {
   it('should produce readable syntax errors', () => {
     const paths = getCasePaths('bemjson-with-error');
 
-    runWebpack(paths.source).then((result) => {
+    return runWebpack(paths.source).then((result) => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
@@ -105,7 +105,7 @@ describe('bemjson loader', () => {
   it('should produce error with bad export', () => {
     const paths = getCasePaths('wrong-bemjson-export');
 
-    runWebpack(paths.source).then(() => {
+    return runWebpack(paths.source).then(() => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
@@ -115,8 +115,81 @@ describe('bemjson loader', () => {
     });
   });
 
+  it('should check for errors in bemjson values types', () => {
+    const paths = getCasePaths('incorrect-bemjson-type');
+
+    return runWebpack(paths.source).then((result) => {
+      // This test case should not be success
+      expect().fail();
+    }).catch((err) => {
+      let message = err.toString();
+      expect(message).to.contain('BemJson type mismatch.');
+      expect(message).to.contain('Value of "elem" expected to be {string}.');
+      expect(message).to.contain('Got: {object}');
+      expect(message).to.contain('"elem": "[object Object]"');
+    });
+  });
+
+  it('should check for errors in bemjson (html key)', () => {
+    const paths = getCasePaths('incorrect-bemjson-html');
+
+    return runWebpack(paths.source).then((result) => {
+      // This test case should not be success
+      expect().fail();
+    }).catch((err) => {
+      let message = err.toString();
+      expect(message).to.contain('BemJson node has "html" key.');
+      expect(message).to.contain('Other keys will be ignored.');
+      expect(message).to.contain('overrides other keys');
+    });
+  });
+
+  it('should check for errors in bemjson (mods + elem)', () => {
+    const paths = getCasePaths('incorrect-bemjson-mods-elem');
+
+    return runWebpack(paths.source).then((result) => {
+      // This test case should not be success
+      expect().fail();
+    }).catch((err) => {
+      let message = err.toString();
+      expect(message).to.contain('BemJson node has "elem" key.');
+      expect(message).to.contain('Key "mods" will be ignored.');
+      expect(message).to.contain('"elem": "e1"');
+    });
+  });
+
+  it('should check for errors in bemjson (mods - block)', () => {
+    const paths = getCasePaths('incorrect-bemjson-mods-block');
+
+    return runWebpack(paths.source).then((result) => {
+      // This test case should not be success
+      expect().fail();
+    }).catch((err) => {
+      let message = err.toString();
+      expect(message).to.contain('BemJson node has "mods" key, ' +
+        'but miss "block".');
+      expect(message).to.contain('Key "mods" will be ignored.');
+      expect(message).to.contain('"mods": "[object Object]"');
+    });
+  });
+
+  it('should check for errors in bemjson (elemMods - elem)', () => {
+    const paths = getCasePaths('incorrect-bemjson-elemmods-elem');
+
+    return runWebpack(paths.source).then((result) => {
+      // This test case should not be success
+      expect().fail();
+    }).catch((err) => {
+      let message = err.toString();
+      expect(message).to.contain('BemJson node has "elemMods" key, ' +
+        'but miss "elem".');
+      expect(message).to.contain('Key "elemMods" will be ignored.');
+      expect(message).to.contain('"elemMods": "[object Object]"');
+    });
+  });
+
   it('should check for errors in bemdecl', () => {
-    const paths = getCasePaths('incorrect-bemjson');
+    const paths = getCasePaths('incorrect-bemdecl');
 
     return runWebpack(paths.source).then((result) => {
       // This test case should not be success
@@ -124,8 +197,8 @@ describe('bemjson loader', () => {
     }).catch((err) => {
       let message = err.toString();
       expect(message).to.contain('Error in BemJson');
-      expect(message).to.contain('incorrect-bemjson');
-      expect(message).to.contain('"modName": "[object Object]",');
+      expect(message).to.contain('incorrect-bemdecl');
+      expect(message).to.contain('"block": "[object Object]"');
     });
   });
 });
