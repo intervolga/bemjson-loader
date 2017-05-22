@@ -1,2 +1,2 @@
 # bemjson-loader
-[![Build status](https://ci.appveyor.com/api/projects/status/itinqtpwmbvvx1sv/branch/master?svg=true)](https://ci.appveyor.com/project/shkarupa-alex/bemjson-loader/branch/master)
+[![Build Status](https://travis-ci.org/shkarupa-alex/bemjson-loader.svg?branch=master)](https://travis-ci.org/shkarupa-alex/bemjson-loader)
