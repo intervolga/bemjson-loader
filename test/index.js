@@ -166,9 +166,12 @@ describe('bemjson loader', () => {
       expect().fail();
     }).catch((err) => {
       let message = err.toString();
-      expect(message).to.contain('block: null, elem: \'error\'');
       expect(message).to.contain('the field `block` is undefined');
-      expect(message).to.contain('incorrect-bemjson-mods-block');
+      expect(message).to.contain('incorrect-bemjson-mods-block/source.bemjson');
+      // expect(message).to.contain('BemJson node has "mods" key, ' +
+      //   'but miss "block".');
+      // expect(message).to.contain('Key "mods" will be ignored.');
+      // expect(message).to.contain('"mods": "[object Object]"');
     });
   });
 
