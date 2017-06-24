@@ -63,21 +63,27 @@
     },
     {
       "block": "b1",
-      "modName": "m1",
-      "modVal": "v1",
-      "elem": "e1"
+      "elem": "e1",
+      "mod": {
+        "name": "m1",
+        "val": true
+      }
     },
     {
       "block": "b1",
-      "modName": "m1",
-      "modVal": true,
-      "elem": "e1"
+      "elem": "e1",
+      "mod": {
+        "name": "m1",
+        "val": "v1"
+      }
     },
     {
       "block": "b1",
-      "modName": "bool",
-      "modVal": true,
-      "elem": "e1"
+      "elem": "e1",
+      "mod": {
+        "name": "bool",
+        "val": true
+      }
     },
     {
       "block": "b1",
@@ -85,13 +91,17 @@
     },
     {
       "block": "b1",
-      "modName": "b1m1",
-      "modVal": "v2"
+      "mod": {
+        "name": "b1m1",
+        "val": true
+      }
     },
     {
       "block": "b1",
-      "modName": "b1m1",
-      "modVal": true
+      "mod": {
+        "name": "b1m1",
+        "val": "v2"
+      }
     },
     {
       "block": "b3"
@@ -113,8 +123,10 @@
     },
     {
       "block": "b1",
-      "modName": "b1m1",
-      "modVal": "v1"
+      "mod": {
+        "name": "b1m1",
+        "val": "v1"
+      }
     }
   ]
 }
