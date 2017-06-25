@@ -58,6 +58,22 @@ describe('bemjson loader', () => {
     });
   });
 
+  it('should pass normal bemjson without blocks', () => {
+    const paths = getCasePaths('bemjson-export-string');
+
+    return runWebpack(paths.source).then((result) => {
+      expect(result).to.eql(require(paths.expected));
+    });
+  });
+
+  it('should pass null bemjson', () => {
+    const paths = getCasePaths('bemjson-export-null');
+
+    return runWebpack(paths.source).then((result) => {
+      expect(result).to.eql(require(paths.expected));
+    });
+  });
+
   // it('should pass normal bemjson when requires changed', (done) => {
   //   const source = path.join(__dirname, 'cases',
   //     'bemjson-with-requires-changed',
