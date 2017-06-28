@@ -4,7 +4,7 @@
   "description": "BemJson loader for WebPack 2",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js lib test/index.js",
+    "lint": "eslint index.js lib test/index.js test/helpers",
     "test": "mocha --ui tdd test/"
   },
   "repository": {
