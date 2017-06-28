@@ -1,7 +1,7 @@
 const path = require('path');
 const loader = path.join(__dirname, '..', '..', 'index.js');
 
-module.exports = function (entry, stringify = null) {
+module.exports = function(entry, stringify = null) {
   let config = {
     entry: entry,
 
@@ -12,7 +12,7 @@ module.exports = function (entry, stringify = null) {
     },
 
     module: {
-      loaders: []
+      loaders: [],
     },
 
     target: 'node',
@@ -20,7 +20,7 @@ module.exports = function (entry, stringify = null) {
 
   let loaderConfig = {
     test: /\.bemjson\.js$/,
-    use: {loader: loader}
+    use: {loader: loader},
   };
   if (null !== stringify) {
     loaderConfig.use.options = {stringify: stringify};
