@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "loader-utils": "^1.1.0",
-    "bemjson-to-decl": "^1.0.2"
+    "bemjson-to-decl": "^1.0.3"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
