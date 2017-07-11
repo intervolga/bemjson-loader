@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const expect = require('expect.js');
 const runWebpack = require('./helpers/run-webpack');
+const watchWebpack = require('./helpers/watch-webpack');
 const requireFromString = require('./../lib/require-from-string');
 
 describe('require from string', () => {
@@ -74,35 +75,47 @@ describe('bemjson loader', () => {
     });
   });
 
-  // it('should pass normal bemjson when requires changed', (done) => {
-  //   const source = path.join(__dirname, 'cases',
-  //     'bemjson-with-requires-changed',
-  //     'source_incl_2.bemjson.js');
-  //   const original = path.join(__dirname, 'cases',
-  //     'bemjson-with-requires-changed',
-  //     'source_incl_2_original.bemjson.js');
-  //   const changed = path.join(__dirname, 'cases',
-  //     'bemjson-with-requires-changed',
-  //     'source_incl_2_changed.bemjson.js');
-  //
-  //   fs.writeFileSync(source, fs.readFileSync(original));
-  //
-  //   const src = path.join(__dirname, 'cases',
-  //     'bemjson-with-requires-changed', 'source.bemjson.js');
-  //
-  //   runWebpack(src).then((result) => {
-  //     fs.writeFileSync(source, fs.readFileSync(changed));
-  //
-  //     runWebpack(src).then((result) => {
-  //       assert.deepEqual(
-  //         result,
-  //         require(path.join(__dirname, 'cases',
-  //           'bemjson-with-requires-changed', 'expected.bemjson.json'))
-  //       );
-  //       done();
-  //     }).catch(done);
-  //   }).catch(done);
-  // });
+  it('should rebuild cached bemjson when requires changed', function(done) {
+    this.timeout(30000); // eslint-disable-line no-invalid-this
+
+    const paths = getCasePaths('bemjson-with-requires-changed');
+
+    const source = path.join(__dirname, 'cases',
+      'bemjson-with-requires-changed',
+      'source_incl_2.bemjson.js');
+    const original = path.join(__dirname, 'cases',
+      'bemjson-with-requires-changed',
+      'source_incl_2_original.bemjson.js');
+    const changed = path.join(__dirname, 'cases',
+      'bemjson-with-requires-changed',
+      'source_incl_2_changed.bemjson.js');
+
+    fs.writeFileSync(source, fs.readFileSync(original));
+
+    let firstRun = false;
+    let firstTimerId = null;
+    const cb = (result) => {
+      expect(typeof result).to.be.a('string');
+
+      if (!firstRun) {
+        if (firstTimerId) {
+          clearTimeout(firstTimerId);
+        }
+
+        firstTimerId = setTimeout(() => {
+          firstRun = true;
+          fs.writeFileSync(source, fs.readFileSync(changed));
+        }, 5000);
+      } else {
+        setTimeout(() => {
+          expect(result).to.eql(require(paths.expected));
+          done();
+        }, 5000);
+      }
+    };
+
+    watchWebpack(paths.source, true, cb);
+  });
 
   it('should produce readable syntax errors', () => {
     const paths = getCasePaths('bemjson-with-error');

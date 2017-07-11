@@ -4,16 +4,17 @@ const webpack = require('webpack');
 const generateConfig = require('./generate-config');
 
 module.exports = (entry, stringify) => {
-  return new Promise((resolve, reject) => {
-    const config = generateConfig(entry, stringify);
+  const config = generateConfig(entry, stringify);
+  const compiler = webpack(config);
 
-    webpack(config, (wpErr, stats) => {
-      const err = wpErr ||
+  return new Promise((resolve, reject) => {
+    compiler.run((err, stats) => {
+      const we = err ||
         (stats.hasErrors() && stats.compilation.errors[0]) ||
         (stats.hasWarnings() && stats.compilation.warnings[0]);
 
-      if (err) {
-        reject(err);
+      if (we) {
+        reject(we);
         return;
       }
 
