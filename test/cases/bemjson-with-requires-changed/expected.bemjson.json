@@ -1,0 +1,27 @@
+{
+  "bemjson": {
+    "block": "page",
+    "content": [
+      {
+        "block": "header",
+        "content": "header content"
+      },
+      "content",
+      {
+        "block": "footer",
+        "content": "footer content changed"
+      }
+    ]
+  },
+  "bemdecl": [
+    {
+      "block": "page"
+    },
+    {
+      "block": "header"
+    },
+    {
+      "block": "footer"
+    }
+  ]
+}
