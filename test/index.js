@@ -173,17 +173,16 @@ describe('bemjson loader', () => {
     });
   });
 
-  it('should check for errors in bemjson (mods + elem)', () => {
-    const paths = getCasePaths('incorrect-bemjson-mods-elem');
+  it('should check for errors in bemjson (mods - block - elem)', () => {
+    const paths = getCasePaths('incorrect-bemjson-mods');
 
     return runWebpack(paths.source).then((result) => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
       let message = err.toString();
-      expect(message).to.contain('BemJson node has "elem" key.');
+      expect(message).to.contain('BemJson node has "mods" key,');
       expect(message).to.contain('Key "mods" will be ignored.');
-      expect(message).to.contain('"elem": "e1"');
     });
   });
 
