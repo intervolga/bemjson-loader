@@ -23,7 +23,8 @@ module.exports = function(entry, stringify = null) {
     use: {loader: loader},
   };
   if (null !== stringify) {
-    loaderConfig.use.options = {stringify: stringify};
+    loaderConfig.use.options = loaderConfig.use.options || {};
+    loaderConfig.use.options.stringify = stringify;
   }
 
   config.module.loaders.push(loaderConfig);
