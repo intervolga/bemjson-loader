@@ -1,6 +1,6 @@
 {
   "name": "intervolga-bemjson-loader",
-  "version": "1.0.0",
+  "version": "1.0.12",
   "description": "BemJson loader for WebPack 2",
   "main": "index.js",
   "scripts": {
