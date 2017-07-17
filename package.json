@@ -1,7 +1,7 @@
 {
   "name": "@intervolga/bemjson-loader",
-  "version": "1.0.13",
-  "description": "BemJson loader for WebPack 2, 3",
+  "version": "1.1.0",
+  "description": "BEM JSON (https://en.bem.info/platform/bemjson/) loader for WebPack 2+",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js lib test/index.js test/helpers",
