@@ -1,7 +1,7 @@
 {
-  "name": "intervolga-bemjson-loader",
+  "name": "@intervolga/bemjson-loader",
   "version": "1.0.12",
-  "description": "BemJson loader for WebPack 2",
+  "description": "BemJson loader for WebPack 2, 3",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js lib test/index.js test/helpers",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shkarupa-alex/bemjson-loader.git"
+    "url": "git+https://github.com/intervolga/bemjson-loader"
   },
   "keywords": [
     "bemjson",
@@ -19,11 +19,11 @@
   "author": "Shkarupa Alex",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shkarupa-alex/bemjson-loader/issues"
+    "url": "https://github.com/intervolga/bemjson-loader/issues"
   },
-  "homepage": "https://github.com/shkarupa-alex/bemjson-loader#readme",
+  "homepage": "https://github.com/intervolga/bemjson-loader#readme",
   "peerDependencies": {
-    "webpack": "^2.0.0"
+    "webpack": "^3.0.0"
   },
   "dependencies": {
     "loader-utils": "^1.1.0",
