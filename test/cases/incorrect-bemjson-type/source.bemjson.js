@@ -13,10 +13,6 @@ module.exports = {
       mods: {error: 3}, // mods applies to block
     },
     {
-      block: 'b1',
-      elemMods: {m2: true}, // elemMods applies to elem
-    },
-    {
       block: 'b3',
       mods: {m2: undefined}, // undefined tends to be errors
     },

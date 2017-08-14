@@ -231,6 +231,22 @@ describe('bemjson loader', () => {
       expect(message).to.contain('"block": "[object Object]"');
     });
   });
+  
+  it('should be fast', () => {
+
+    const paths = getCasePaths('bemjson-speedtest');
+
+    const start = process.hrtime();
+    return runWebpack(paths.source).then((result) => {
+      const elapsed = process.hrtime(start);
+
+      expect(elapsed).to.be.an('array');
+      expect(elapsed[0]).to.be(0);
+
+      // most time used for webpack initialization
+      expect(elapsed[1] / 1000000).to.be.below(500);
+    });
+  });
 });
 
 /**
