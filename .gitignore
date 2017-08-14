@@ -41,3 +41,5 @@ jspm_packages
 
 # Test artefacts
 test/cases/**/produced*
+test/cases/**/*.bemjson.json
+test/cases/**/*.bemdecl.json

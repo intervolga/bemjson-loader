@@ -1,4 +1,5 @@
 const bemjsonToDecl = require('bemjson-to-decl');
+const loaderUtils = require('loader-utils');
 const path = require('path');
 const getRequiredModules = require('./lib/get-required-modules');
 const requireFromString = require('./lib/require-from-string');
@@ -13,6 +14,10 @@ const validateBemDecl = require('./lib/validate-bemdecl');
  */
 function bemJsonLoader(source) {
   const self = this;
+  const options = {
+    emit: true,
+  };
+  Object.assign(options, loaderUtils.getOptions(this));
 
   // Evaluate raw BemJson. It may have dependencies
   const evaluatedModule = requireFromString(source, this.resourcePath);
@@ -33,11 +38,6 @@ function bemJsonLoader(source) {
     self.emitWarning(e);
   });
 
-  // // Emit evaluated BemJson without dependencies
-  // const evaluatedPath = path.basename(this.resourcePath, '.js') + '.json';
-  // const evaluatedString = JSON.stringify(evaluatedModule.exports, null, 2);
-  // this.emitFile(evaluatedPath, evaluatedString);
-
   // Convert BemJson to BemDecl
   let bemDecl;
   try {
@@ -52,6 +52,17 @@ function bemJsonLoader(source) {
   validateBemDecl(bemDecl, this.resourcePath).forEach((e) => {
     self.emitWarning(e);
   });
+
+  // Emit evaluated BemJson without dependencies
+  if (options.emit) {
+    const evalPath = path.basename(this.resourcePath, '.bemjson.js');
+
+    const bemJsonString = JSON.stringify(bemJson, null, 2);
+    this.emitFile(evalPath + '.bemjson.json', bemJsonString);
+
+    const bemDeclString = JSON.stringify(bemDecl, null, 2);
+    this.emitFile(evalPath + '.bemdecl.json', bemDeclString);
+  }
 
   const result = {
     bemjson: bemJson,

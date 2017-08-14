@@ -41,7 +41,6 @@ describe('require from string', () => {
   });
 });
 
-
 describe('bemjson loader', () => {
   it('should pass normal bemjson', () => {
     const paths = getCasePaths('normal-bemjson');
@@ -231,7 +230,7 @@ describe('bemjson loader', () => {
       expect(message).to.contain('"block": "[object Object]"');
     });
   });
-  
+
   it('should be fast', () => {
 
     const paths = getCasePaths('bemjson-speedtest');

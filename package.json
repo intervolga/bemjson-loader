@@ -1,11 +1,11 @@
 {
   "name": "@intervolga/bemjson-loader",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "BEM JSON (https://en.bem.info/platform/bemjson/) loader for WebPack 2+",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js lib test/index.js test/helpers",
-    "test": "mocha --ui tdd test/"
+    "test": "npm run lint && mocha --ui tdd test/"
   },
   "repository": {
     "type": "git",
