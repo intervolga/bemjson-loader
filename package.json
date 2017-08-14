@@ -26,9 +26,7 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
-    "@bem/sdk": "github:bem/bem-sdk",
-    "bemjson-to-decl": "^1.0.3",
-    "loader-utils": "^1.1.0"
+    "bemjson-to-decl": "^1.0.3"
   },
   "devDependencies": {
     "eslint": "^4.2.0",
@@ -36,9 +34,9 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "expect.js": "^0.3.1",
-    "mocha": "^3.4.2",
+    "mocha": "^3.5.0",
     "node-eval": "^1.1.0",
-    "webpack": "^3.3.0"
+    "webpack": "^3.5.3"
   },
   "files": [
     "lib",
