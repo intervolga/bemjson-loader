@@ -3,8 +3,8 @@ const path = require('path');
 const webpack = require('webpack');
 const generateConfig = require('./generate-config');
 
-module.exports = (entry, stringify) => {
-  const config = generateConfig(entry, stringify);
+module.exports = (entry) => {
+  const config = generateConfig(entry);
   const compiler = webpack(config);
 
   return new Promise((resolve, reject) => {
