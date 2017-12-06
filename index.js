@@ -1,4 +1,4 @@
-const bemjsonToDecl = require('bemjson-to-decl');
+const bemjsonToDecl = require('@bem/sdk.bemjson-to-decl');
 const nodeEval = require('node-eval');
 const validateBemJson = require('./lib/validate-bemjson');
 const validateBemDecl = require('./lib/validate-bemdecl');
