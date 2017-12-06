@@ -27,18 +27,18 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
-    "bemjson-to-decl": "^1.0.3",
-    "node-eval": "^1.1.0"
+    "@bem/sdk.bemjson-to-decl": "^0.2.2",
+    "node-eval": "^1.1.1"
   },
   "devDependencies": {
-    "@intervolga/eval-loader": "^1.0.1",
+    "@intervolga/eval-loader": "^1.0.2",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.1",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "expect.js": "^0.3.1",
-    "mocha": "^3.5.0",
-    "webpack": "^3.5.3"
+    "mocha": "^3.5.3",
+    "webpack": "^3.10.0"
   },
   "files": [
     "lib",
