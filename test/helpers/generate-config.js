@@ -3,6 +3,8 @@ const loader = path.join(__dirname, '..', '..', 'index.js');
 
 module.exports = function(entry) {
   return {
+    mode: 'development',
+
     entry: entry,
 
     output: {
@@ -12,7 +14,7 @@ module.exports = function(entry) {
     },
 
     module: {
-      loaders: [{
+      rules: [{
         test: /\.bemjson\.js$/,
         use: [
           {loader: loader},
