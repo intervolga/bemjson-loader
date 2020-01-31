@@ -34,7 +34,7 @@ describe('bemjson loader', () => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
-      let message = err.toString();
+      const message = err.toString();
       expect(message).to.contain('Module build failed');
       expect(message).to.contain('source.bemjson.js:7');
       expect(message).to.contain('elemMods: {m1');
@@ -48,7 +48,7 @@ describe('bemjson loader', () => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
-      let message = err.toString();
+      const message = err.toString();
       expect(message).to.contain('BemJson type mismatch.');
       expect(message).to.contain('Value of "elem" expected to be {string}.');
       expect(message).to.contain('Got: {object}');
@@ -63,7 +63,7 @@ describe('bemjson loader', () => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
-      let message = err.toString();
+      const message = err.toString();
       expect(message).to.contain('BemJson node has "html" key.');
       expect(message).to.contain('Other keys will be ignored.');
       expect(message).to.contain('overrides other keys');
@@ -77,7 +77,7 @@ describe('bemjson loader', () => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
-      let message = err.toString();
+      const message = err.toString();
       expect(message).to.contain('BemJson node has "mods" key,');
       expect(message).to.contain('Key "mods" will be ignored.');
     });
@@ -90,7 +90,7 @@ describe('bemjson loader', () => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
-      let message = err.toString();
+      const message = err.toString();
       expect(message).to.contain('the field `block` is undefined');
       expect(message).to.contain('incorrect-bemjson-mods-block/source.bemjson');
     });
@@ -103,7 +103,7 @@ describe('bemjson loader', () => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
-      let message = err.toString();
+      const message = err.toString();
       expect(message).to.contain('BemJson node has "elemMods" key, ' +
         'but miss "elem".');
       expect(message).to.contain('Key "elemMods" will be ignored.');
@@ -118,7 +118,7 @@ describe('bemjson loader', () => {
       // This test case should not be success
       expect().fail();
     }).catch((err) => {
-      let message = err.toString();
+      const message = err.toString();
       expect(message).to.contain('Error in BemJson');
       expect(message).to.contain('incorrect-bemdecl');
       expect(message).to.contain('"block": "[object Object]"');
@@ -150,8 +150,8 @@ describe('bemjson loader', () => {
 function getCasePaths(caseName) {
   return {
     'source': path.join(__dirname, 'cases', caseName,
-      'source.bemjson.js'),
+        'source.bemjson.js'),
     'expected': path.join(__dirname, 'cases', caseName,
-      'expected.bemjson.json'),
+        'expected.bemjson.json'),
   };
 }
